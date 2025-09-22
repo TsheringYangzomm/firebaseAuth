@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'profile_page.dart';
 import 'more_page.dart';
@@ -304,4 +304,4 @@ class HomeContentPage extends StatelessWidget {
       trailing: const Icon(Icons.chevron_right, color: Colors.grey),
     );
   }
-}
+}*/
