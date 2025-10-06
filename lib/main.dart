@@ -1,14 +1,13 @@
+// lib/main.dart
+
 import 'package:flutter/material.dart';
-import 'auth/auth_page.dart';
-import 'screens/products_screen.dart';
-import 'screens/cart_screen.dart';
-import 'screens/profile_screen.dart';
+//import 'package:provider/provider.dart'; // NEW
+//import 'providers/post_provider.dart'; // NEW
+import 'screens/main_screen.dart'; 
+import 'screens/login_screen.dart'; // <<< NEW IMPORT
+import 'theme/app_theme.dart';
 
-import 'package:firebase_core/firebase_core.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
   runApp(const MyApp());
 }
 
@@ -18,64 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'iPhone Store',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const MainNavigationScreen(), // Changed to navigation screen
+      title: 'Crimson App',
+      theme: AppTheme.darkTheme, 
+      // <<< CHANGED: App starts with the Login Screen
+      home: const LoginScreen(), 
+      
       debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-// New navigation screen with bottom bar
-class MainNavigationScreen extends StatefulWidget {
-  const MainNavigationScreen({super.key});
-
-  @override
-  State<MainNavigationScreen> createState() => _MainNavigationScreenState();
-}
-
-class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _currentIndex = 0;
-
-  // Screens for each tab
-  final List<Widget> _screens = [
-    const ProductsScreen(), // Home tab
-    const CartScreen(),     // Cart tab
-    const ProfileScreen(),  // Profile tab
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
     );
   }
 }

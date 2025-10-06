@@ -82,4 +82,5 @@ class DefaultFirebaseOptions {
     authDomain: 'flutterauthentication-ae1d0.firebaseapp.com',
     storageBucket: 'flutterauthentication-ae1d0.firebasestorage.app',
   );
+
 }
